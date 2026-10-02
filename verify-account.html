@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoNEXA AI — Verify Your Account</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root{--bg:#080b0f;--panel:#0f151c;--panel-alt:#121a22;--border:#1d2833;--text:#f3f6f8;--muted:#8b99a6;--accent:#22e0ab;--accent-dim:#16a97f;--yellow:#eab308;--danger:#ff6b6b;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Inter",-apple-system,sans-serif;background:radial-gradient(900px 460px at 50% -10%,rgba(34,224,171,.08),transparent 55%),var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:32px 28px;max-width:440px;width:100%;}
+  .mark{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#0d9488);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#06120e;margin:0 auto 16px;}
+  h1{font-size:19px;font-weight:800;text-align:center;margin-bottom:6px;}
+  p.sub{font-size:12.5px;color:var(--muted);text-align:center;line-height:1.6;margin-bottom:22px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;}
+  input[type="file"]{width:100%;padding:10px;border-radius:9px;border:1px solid var(--border);background:var(--panel-alt);color:var(--text);font-size:12.5px;}
+  .btn-solid{background:var(--accent);color:#06120e;border:none;width:100%;padding:13px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;}
+  .btn-solid:disabled{opacity:.5;cursor:not-allowed;}
+  .status-msg{font-size:12.5px;margin-top:14px;text-align:center;min-height:18px;}
+  .info-box{background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.35);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--yellow);line-height:1.6;margin-bottom:18px;}
+  .pending-box{text-align:center;padding:20px 0;}
+  .pending-box .icon{font-size:32px;margin-bottom:10px;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="mark">G</div>
+    <h1>Verify your account</h1>
+    <p class="sub">Upload a scan or photo of your professional document (diploma, license, or legal certificate) to unlock your <span id="professionLabel">professional</span> account.</p>
+
+    <div id="uploadSection">
+      <div class="info-box">⏳ Review typically takes 24–48 hours. You'll see your status reflected here once an admin checks your document.</div>
+
+      <div class="field">
+        <label>Document (PDF, JPG, or PNG)</label>
+        <input type="file" id="fDoc" accept="image/*,application/pdf" capture="environment">
+      </div>
+
+      <button class="btn-solid" id="submitBtn">Upload & Submit for Review</button>
+    </div>
+
+    <div id="pendingSection" style="display:none;" class="pending-box">
+      <div class="icon" id="pendingIcon">⏳</div>
+      <p id="pendingText" style="font-size:13.5px;color:var(--muted);line-height:1.6;"></p>
+    </div>
+
+    <div class="status-msg" id="statusMsg"></div>
+  </div>
+
+<script defer src="config.js"></script>
+<script defer src="verify-account.js"></script>
+</body>
+</html>
